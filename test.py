@@ -105,8 +105,13 @@ def run_test(path, files, name):
 		err("TEST FAILURE")
 	return is_ok
 
+base_folder = './tests'
+
+if len(sys.argv) > 3:
+	base_folder = os.path.join(base_folder, sys.argv[3])
+
 is_ok = True
-for root, dirs, files in os.walk("./tests"):
+for root, dirs, files in os.walk(base_folder):
 	path = root.split(os.sep)[2:]
 	if path==[]:continue
 	if "ext" in files:
