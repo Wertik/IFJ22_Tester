@@ -105,7 +105,11 @@ def run_test(path, files, name):
 		err("TEST FAILURE")
 	return is_ok
 
-base_folder = './tests'
+# parent folder of this script
+# ensures we're always taking tests from the script parent folder
+par_folder = os.path.abspath(os.path.join(__file__, os.pardir))
+
+base_folder = os.path.join(par_folder, 'tests')
 
 if len(sys.argv) > 3:
 	base_folder = os.path.join(base_folder, sys.argv[3])
